@@ -46,42 +46,46 @@ public class AnchorCreator : MonoBehaviour
         m_AnchorPoints = new List<ARAnchor>();
     }
 
-    void Update()
+void Update()
+{
+    if (Input.touchCount == 0)
+        return;
+
+    var touch = Input.GetTouch(0);
+    if (touch.phase != TouchPhase.Began)
+        return;
+
+    if (m_RaycastManager.Raycast(touch.position, s_Hits, TrackableType.PlaneWithinPolygon))
     {
-        // If there is no tap, then simply do nothing until the next call to Update().
-        if (Input.touchCount == 0)
-            return;
+        var hitPose = s_Hits[0].pose;
+        var hitTrackableId = s_Hits[0].trackableId;
+        var hitPlane = m_PlaneManager.GetPlane(hitTrackableId);
 
-        var touch = Input.GetTouch(0);
-        if (touch.phase != TouchPhase.Began)
-            return;
+        var anchor = m_AnchorManager.AttachAnchor(hitPlane, hitPose);
+        GameObject die = Instantiate(m_AnchorPrefab, this.transform);
+        die.GetComponent<Rigidbody>().velocity = new Vector3(die.GetComponent<Rigidbody>().velocity.x, die.GetComponent<Rigidbody>().velocity.y, 
+        die.GetComponent<Rigidbody>().velocity.z + Random.Range(2, 5));
+        die.GetComponent<Rigidbody>().AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
 
-        if (m_RaycastManager.Raycast(touch.position, s_Hits, TrackableType.PlaneWithinPolygon))
+        if (anchor == null)
         {
-            // Raycast hits are sorted by distance, so the first one
-            // will be the closest hit.
-            var hitPose = s_Hits[0].pose;
-            var hitTrackableId = s_Hits[0].trackableId;
-            var hitPlane = m_PlaneManager.GetPlane(hitTrackableId);
-
-            // This attaches an anchor to the area on the plane corresponding to the raycast hit,
-            // and afterwards instantiates an instance of your chosen prefab at that point.
-            // This prefab instance is parented to the anchor to make sure the position of the prefab is consistent
-            // with the anchor, since an anchor attached to an ARPlane will be updated automatically by the ARAnchorManager as the ARPlane's exact position is refined.
-            var anchor = m_AnchorManager.AttachAnchor(hitPlane, hitPose);
-            Instantiate(m_AnchorPrefab, anchor.transform);
-
-            if (anchor == null)
-            {
-                Debug.Log("Error creating anchor.");
-            }
-            else
-            {
-                // Stores the anchor so that it may be removed later.
-                m_AnchorPoints.Add(anchor);
-            }
+            Debug.Log("Error creating anchor.");
         }
+        else
+        {
+            m_AnchorPoints.Add(anchor);
+        }
+
+        // Calculate the direction the camera is facing.
+        Vector3 cameraForward = Camera.main.transform.forward;
+
+        // Define a small initial velocity to shoot the die lightly forward.
+        float initialVelocity = Random.Range(2, 5); // Adjust as needed.
+
+        // Apply the initial velocity in the camera's forward direction.
+
     }
+}
 
     static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
 

@@ -18,6 +18,6 @@ public class AdjustBoxCube : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(ARCam.transform.position.x + 8.6f, ARCam.transform.position.y, transform.position.z);
+        transform.position = new Vector3(ARCam.transform.position.x + 8.6f, ARCam.transform.position.y - 2, transform.position.z);
     }
 }
