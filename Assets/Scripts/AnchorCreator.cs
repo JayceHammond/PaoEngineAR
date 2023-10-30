@@ -17,6 +17,7 @@ public class AnchorCreator : MonoBehaviour
     // This is the prefab that will appear every time an anchor is created.
     [SerializeField]
     GameObject m_AnchorPrefab;
+    public GameObject cam;
 
     public GameObject AnchorPrefab
     {
@@ -62,7 +63,7 @@ void Update()
         var hitPlane = m_PlaneManager.GetPlane(hitTrackableId);
 
         var anchor = m_AnchorManager.AttachAnchor(hitPlane, hitPose);
-        GameObject die = Instantiate(m_AnchorPrefab, this.transform);
+        GameObject die = Instantiate(m_AnchorPrefab, anchor.transform);
         die.GetComponent<Rigidbody>().velocity = new Vector3(die.GetComponent<Rigidbody>().velocity.x, die.GetComponent<Rigidbody>().velocity.y, 
         die.GetComponent<Rigidbody>().velocity.z + Random.Range(2, 5));
         die.GetComponent<Rigidbody>().AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));

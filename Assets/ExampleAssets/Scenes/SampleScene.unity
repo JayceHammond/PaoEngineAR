@@ -222,8 +222,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 388525031}
+  - {fileID: 987252888}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &22732925
 MonoBehaviour:
@@ -239,6 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AnchorPrefab: {fileID: 2428332984981330496, guid: f34d4655fcc9b3546a9e30884907c67c,
     type: 3}
+  cam: {fileID: 22732919}
 --- !u!114 &22732926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -837,7 +839,7 @@ Transform:
   - {fileID: 1448592925}
   - {fileID: 1962752797}
   - {fileID: 1877933226}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 22732924}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &987252889
@@ -1157,7 +1159,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5434462552450501220
 MonoBehaviour:
