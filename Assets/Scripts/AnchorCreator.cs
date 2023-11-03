@@ -63,10 +63,10 @@ void Update()
         var hitPlane = m_PlaneManager.GetPlane(hitTrackableId);
 
         var anchor = m_AnchorManager.AttachAnchor(hitPlane, hitPose);
-        GameObject die = Instantiate(m_AnchorPrefab, anchor.transform);
-        die.GetComponent<Rigidbody>().velocity = new Vector3(die.GetComponent<Rigidbody>().velocity.x, die.GetComponent<Rigidbody>().velocity.y, 
-        die.GetComponent<Rigidbody>().velocity.z + Random.Range(2, 5));
-        die.GetComponent<Rigidbody>().AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
+        //GameObject die = Instantiate(m_AnchorPrefab, anchor.transform);
+        //die.GetComponent<Rigidbody>().velocity = new Vector3(die.GetComponent<Rigidbody>().velocity.x, die.GetComponent<Rigidbody>().velocity.y, 
+        //die.GetComponent<Rigidbody>().velocity.z + Random.Range(2, 5));
+        //die.GetComponent<Rigidbody>().AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
 
         if (anchor == null)
         {
