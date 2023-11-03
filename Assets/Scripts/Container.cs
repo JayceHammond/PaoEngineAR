@@ -44,7 +44,7 @@ public class Container : MonoBehaviour {
     public bool tableConstraint = false;
     public bool themeChanged = false;
 
-    //public Preset activePreset;
-    //public Theme activeTheme;
+    public Preset activePreset;
+    public Theme activeTheme;
 
 }

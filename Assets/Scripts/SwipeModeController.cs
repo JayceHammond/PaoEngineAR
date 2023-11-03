@@ -62,8 +62,8 @@ public class SwipeModeController {
                 // Camera Rotation and Reset
                 float xCameraRotation = Camera.current.transform.forward.x;
                 float zCameraRotation = Camera.current.transform.forward.z;
-                float xForce = (throwForceZ / timeInterval) * xCameraRotation;
-                float zForce = (throwForceZ / timeInterval) * zCameraRotation;
+                float xForce = throwForceZ / timeInterval * xCameraRotation;
+                float zForce = throwForceZ / timeInterval * zCameraRotation;
                 float yForce = throwForceY * direction.y;
 
                 rigidbody.isKinematic = false;

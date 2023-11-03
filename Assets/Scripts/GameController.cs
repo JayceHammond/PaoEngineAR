@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour {
     private ARTogglePlaneDetection arTogglePlaneDetection;
 
     private SwipeModeController swipeModeController;
-    //private FallingModeController fallingModeController;
+    private FallingModeController fallingModeController;
 
     private List<GameObject> dice;
     private List<GameObject> presetInstantiatedDice;
@@ -81,7 +81,7 @@ public class GameController : MonoBehaviour {
         popup = popupGameObject.GetComponent<Popup>();
         
         swipeModeController = new SwipeModeController();
-        //fallingModeController = new FallingModeController();
+        fallingModeController = new FallingModeController();
         presetInstantiatedDice = new List<GameObject>();
 
         if (Container.Instance.throwMode == ThrowMode.SWIPE_TO_THROW) {
@@ -262,9 +262,9 @@ public class GameController : MonoBehaviour {
                     }
                 }
 
-                //presetInstantiatedDice = fallingModeController.DropPreset(Container.Instance.activePreset);
+                presetInstantiatedDice = fallingModeController.DropPreset(Container.Instance.activePreset);
             } else {
-                //instantiatedDie = fallingModeController.DropDie(dice[currentDie]);
+                instantiatedDie = fallingModeController.DropDie(dice[currentDie]);
             }
         }
     }
@@ -385,12 +385,12 @@ public class GameController : MonoBehaviour {
     }
 
     private void SetDiceMaterial() {
-        //Theme currTheme = Container.Instance.activeTheme;
+        Theme currTheme = Container.Instance.activeTheme;
         
-        //Container.Instance.themeDie.color = currTheme.GetDieColor();
-        //Container.Instance.themeNumber.color = currTheme.GetNumbColor();
+        Container.Instance.themeDie.color = currTheme.GetDieColor();
+        Container.Instance.themeNumber.color = currTheme.GetNumbColor();
         
-        //Container.Instance.themeChanged = false;
+        Container.Instance.themeChanged = false;
     }
 
     private IEnumerator DelayedThrowable() {
