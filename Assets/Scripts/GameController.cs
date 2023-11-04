@@ -136,9 +136,9 @@ public class GameController : MonoBehaviour {
     }
     
     private void SetupFallingDices() {
-        if (instantiatedDie != null) {
+      /*  if (instantiatedDie != null) {
             Destroy(instantiatedDie);
-        }
+        }*/
         
         pointer.SetActive(true);
         throwButtonImage.sprite = modeSprites[1];
@@ -250,9 +250,9 @@ public class GameController : MonoBehaviour {
         } else if (Container.Instance.throwMode == ThrowMode.FALLING) {
             tempResult = 0;
 
-            if (instantiatedDie != null) {
+           /* if (instantiatedDie != null) {
                 Destroy(instantiatedDie);
-            }
+            }*/
 
             if (currentDie == dice.Count) {  // preset
                 if(presetInstantiatedDice.Count > 0) {

@@ -13,7 +13,7 @@ public class FallingModeController : MonoBehaviour
         GameObject res = null;
         float y = Container.Instance.pointerPosition.position.y + 1.5f;
 
-        Vector3 v = new Vector3(Container.Instance.pointerPosition.position.x, y, Container.Instance.pointerPosition.position.z);
+        Vector3 v = new Vector3(Container.Instance.pointerPosition.position.x, y- 3, Container.Instance.pointerPosition.position.z);
         Vector3 torque = new Vector3();
 
         torque.x = Random.Range(-200, 200);
@@ -26,6 +26,7 @@ public class FallingModeController : MonoBehaviour
         Rigidbody rb = res.GetComponent<Rigidbody>();
         rb.isKinematic = false;
         rb.AddTorque(torque);
+        rb.AddForce(rb.velocity.x, rb.velocity.y, rb.velocity.z + Random.Range(0, 10), ForceMode.Impulse);
 
         return res;
     }
