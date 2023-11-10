@@ -9,7 +9,10 @@ public class TwoDRollDice : MonoBehaviour
     public GameObject menu;
     public int currentDie = 0;
     private bool menuBool = false;
+    public GameObject loadingScreen;
     private static int scene = 0;
+    public float targetTime = 5f;
+    private bool changeScene = false;
     // Start is called before the first frame update
 
     public void Roll()
@@ -74,15 +77,34 @@ public class TwoDRollDice : MonoBehaviour
         
     }
 
+    public void timeEnded() {
+        targetTime -= Time.deltaTime;
+    }
+
     public void switchScenes()
     {
-        if (scene == 0){
-            scene = 1;
-            SceneManager.LoadScene(1);
+        changeScene = true;
+        while (targetTime > 0.0f) {
+            targetTime -= Time.deltaTime;
+            loadingScreen.SetActive(true);
         }
-        else if (scene == 1) {
-            scene = 0;
-            SceneManager.LoadScene(0);
+        if (scene == 0)
+        {
+            if (targetTime <= 0.0f)
+            {
+                scene = 1;
+                loadingScreen.SetActive(false);
+                SceneManager.LoadScene(1);
+            }
+        }
+        else if (scene == 1)
+        {
+            
+            if (targetTime <= 0.0f) { 
+                scene = 0;
+                loadingScreen.SetActive(false);
+                SceneManager.LoadScene(0);
+            }
         }
     }
 
@@ -101,6 +123,8 @@ public class TwoDRollDice : MonoBehaviour
     }
 
 
+
+
     void Start()
     {
         //+ Random.Range(0f, 150f)
@@ -110,6 +134,8 @@ public class TwoDRollDice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (changeScene) {
+            timeEnded();
+        }
     }
 }
