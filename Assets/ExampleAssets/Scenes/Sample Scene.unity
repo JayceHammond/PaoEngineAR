@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -289,7 +289,9 @@ MonoBehaviour:
   menu: {fileID: 0}
   currentDie: 0
   loadingScreen: {fileID: 1308682739}
-  targetTime: 30
+  scene:
+    m_Handle: 0
+  targetTime: 2
 --- !u!4 &251870407
 Transform:
   m_ObjectHideFlags: 0
@@ -1611,7 +1613,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 1
+  - 0.2
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
@@ -2497,7 +2499,7 @@ PrefabInstance:
     - target: {fileID: 1550761865474305796, guid: 473972bc1fecb254f87972fe0b9ba890,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1382
+      value: 1286
       objectReference: {fileID: 0}
     - target: {fileID: 1550761865474305797, guid: 473972bc1fecb254f87972fe0b9ba890,
         type: 3}

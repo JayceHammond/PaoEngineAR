@@ -10,11 +10,16 @@ public class TwoDRollDice : MonoBehaviour
     public int currentDie = 0;
     private bool menuBool = false;
     public GameObject loadingScreen;
-    private static int scene = 0;
-    public float targetTime = 5f;
+    public Scene scene;
+    public float targetTime = 2f;
+    public static int sceneNum;
     private bool changeScene = false;
     // Start is called before the first frame update
 
+    private void Awake() {
+        Scene currScene = SceneManager.GetSceneByName("SampleScene");
+        scene = currScene;
+    }
     public void Roll()
     {
         Camera rollCam = GameObject.Find("Roll Camera").GetComponent<Camera>();
@@ -77,34 +82,21 @@ public class TwoDRollDice : MonoBehaviour
         
     }
 
-    public void timeEnded() {
-        targetTime -= Time.deltaTime;
-    }
 
     public void switchScenes()
     {
         changeScene = true;
-        while (targetTime > 0.0f) {
-            targetTime -= Time.deltaTime;
-            loadingScreen.SetActive(true);
-        }
-        if (scene == 0)
+        if (scene == SceneManager.GetSceneByName("Opening Scene"))
         {
-            if (targetTime <= 0.0f)
-            {
-                scene = 1;
-                loadingScreen.SetActive(false);
-                SceneManager.LoadScene(1);
-            }
+            scene = SceneManager.GetSceneByName("Sample Scene");
+            sceneNum = 0;
+            return;
         }
-        else if (scene == 1)
+        if (scene == SceneManager.GetSceneByName("SampleScene"))
         {
-            
-            if (targetTime <= 0.0f) { 
-                scene = 0;
-                loadingScreen.SetActive(false);
-                SceneManager.LoadScene(0);
-            }
+            scene = SceneManager.GetSceneByName("Opening Scene");
+            sceneNum = 1;
+            return;
         }
     }
 
@@ -135,7 +127,13 @@ public class TwoDRollDice : MonoBehaviour
     void Update()
     {
         if (changeScene) {
-            timeEnded();
+            targetTime -= Time.deltaTime;
+            print(targetTime);
+            loadingScreen.SetActive(true);
+            if(targetTime <= 0.0f){
+                loadingScreen.SetActive(false);
+                SceneManager.LoadScene(sceneNum);
+            }
         }
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3252,6 +3252,8 @@ MonoBehaviour:
   menu: {fileID: 0}
   currentDie: 0
   loadingScreen: {fileID: 0}
+  scene:
+    m_Handle: 0
   targetTime: 5
 --- !u!1 &1162372892
 GameObject:
@@ -3568,7 +3570,7 @@ RectTransform:
   m_GameObject: {fileID: 1364541135}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1821696, y: 1.1821696, z: 1.1821696}
+  m_LocalScale: {x: 1.1821696, y: 1.2028576, z: 1.1821696}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1333154141}
@@ -3580,7 +3582,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 312, y: 0}
+  m_AnchoredPosition: {x: 379, y: 0}
   m_SizeDelta: {x: 828, y: -313.80908}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1364541137
@@ -4034,7 +4036,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 1
+  - 0.2
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
@@ -5160,6 +5162,8 @@ MonoBehaviour:
   menu: {fileID: 1364541135}
   currentDie: 0
   loadingScreen: {fileID: 887096113}
+  scene:
+    m_Handle: 0
   targetTime: 5
 --- !u!1 &1885359929
 GameObject:
