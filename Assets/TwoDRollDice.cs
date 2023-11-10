@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TwoDRollDice : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class TwoDRollDice : MonoBehaviour
     public GameObject menu;
     public int currentDie = 0;
     private bool menuBool = false;
+    private static int scene = 0;
     // Start is called before the first frame update
 
     public void Roll()
@@ -70,6 +72,18 @@ public class TwoDRollDice : MonoBehaviour
             Destroy(die);
         }
         
+    }
+
+    public void switchScenes()
+    {
+        if (scene == 0){
+            scene = 1;
+            SceneManager.LoadScene(1);
+        }
+        else if (scene == 1) {
+            scene = 0;
+            SceneManager.LoadScene(0);
+        }
     }
 
     public void slideMenu() {
