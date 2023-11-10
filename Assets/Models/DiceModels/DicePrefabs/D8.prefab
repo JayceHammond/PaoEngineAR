@@ -264,8 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dieSides: []
-  hitParticle: {fileID: 5807145866197521026, guid: 9fca2cb8c8e548e4d85611c1296264d3,
-    type: 3}
+  hitParticle: {fileID: 0}
   beamParticle: {fileID: 0}
   result: 1
   availableResult: 0
